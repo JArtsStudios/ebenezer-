@@ -1,0 +1,15 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#player {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#videoDescription {
+    margin-top: 20px;
+    padding: 0 20px;
+}
