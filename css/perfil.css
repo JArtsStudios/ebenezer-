@@ -86,79 +86,134 @@ header {
 }
 
 
-.contenido {
+.buscador {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-
-.marco {
-    padding: 120px;
-    width: 100%;
-    background: #fff;
-}
-
-
-.container {
-
-    padding: 20px;
-    border-radius: 8px;
-
-    max-width: 400px;
-    width: 100%;
-
-}
-
-h2 {
     text-align: center;
-    margin-bottom: 20px;
-
+    margin-right: 5%;
 }
 
-#profile {
-    text-align: center;
 
-}
-
-#avatar {
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
-    cursor: pointer;
-    border: solid 3px #fff;
-}
-
-#avatar-edit {
+.search-container {
     position: relative;
-    display: inline-block;
+    /* width: 100%;
+    max-width: 300px; */
 }
 
-#avatar-edit i {
+#searchInput {
+    width: 30%;
+    padding: 10px 40px 10px 20px;
+    background: #ffffff9d;
+    border: none;
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+
+    font-size: 16px;
+    transition: .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#searchInput:hover {
+    width: 40%;
+
+}
+
+#searchInput:focus {
+    width: 75%;
+
+    border: none;
+    outline: none;
+}
+
+.search-icon {
     position: absolute;
-    bottom: 4px;
-    right: 4px;
-    background-color: #000;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
     color: #fff;
-    border-radius: 50%;
-    padding: 10px;
-    cursor: pointer;
 }
 
-#username {
-    scale: 2;
+#searchResults {
+    position: absolute;
+    top: calc(40% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffffb6;
+  padding: 10px 0;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 300px;
+    display: none;
+    box-shadow: 0 2px 10px rgba(5, 13, 27, 0.277);
+    opacity: 0;
+    transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-height: 0;
+    overflow-y: hidden;
+    z-index: 10;
+    animation: subir .3s cubic-bezier(0.175, 0.885, 0.32, 1.275) ;
 }
 
+#searchResults.show {
+    display: block;
+    opacity: 1;
+    max-height: 200px;
 
+}
 
-
-a {
-    color: #ddd;
+#searchResults a {
+    display: block;
+    padding: 10px 15px;
     text-decoration: none;
+    color: #333;
+    transition: .3s ease;
+
+
 }
+
+#searchResults a:hover {
+    background: #c5d6fe;
+}
+
+#searchResults a:last-child {
+    border-bottom: none;
+}
+
+.content {
+margin: 0;
+}
+
+.blur-background {
+    filter: blur(5px);
+    transition:  0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(27, 27, 27, 0);
+    z-index: 5;
+    display: none;
+}
+
+
+
+@keyframes subir {
+    form{
+        transform: translateX(15px);  
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+} 
+
+
 
 
 .progreso-container {
@@ -181,24 +236,35 @@ main {
 
 .progreso {
     
-    max-width: 600px;
+    max-width: 900px;
     margin: 0 auto;
-    background-color: transparent;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0px -10px;
+    gap: 25px;
 }
 
 .leccion {
+    width: 80px;
     display: flex;
     align-items: center;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: 5px;
-    background-color: #e0ffe0;
+    background-color: #bbffbb;
     transition: transform 0.2s;
     color: #000;
+    
 }
 
 .leccion:hover {
@@ -206,17 +272,20 @@ main {
 }
 
 .leccion i {
+
     color: #4CAF50;
     margin-right: 10px;
 }
 
 .imagen-descargable {
+    width: 100%;
     margin-top: 20px;
     text-align: center;
 }
 
 .imagen-descargable a {
     display: inline-block;
+
     padding: 10px 20px;
     background-color: #4CAF50;
     color: white;
