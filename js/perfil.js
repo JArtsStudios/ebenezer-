@@ -64,69 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (progreso >= 24) {
                 const imagenContainer = document.createElement('div');
                 imagenContainer.classList.add('imagen-descargable');
-                imagenContainer.innerHTML = `<a href="../img/icono1.png" download="certificado.png">Descargar Certificado</a>`;
+                imagenContainer.innerHTML = `<a href="img/img 3.jpeg" download="certificado.png">Descargar Certificado</a>`;
                 progresoContainer.appendChild(imagenContainer);
             }
         });
-
-
-
-
-
-
-
-       // buscado code
-
-       
-const pages = [
-    { url: 'multimedia.html', name: 'Multimedia' },
-    { url: 'oraciones.html', name: 'Oraciones' },
-    { url: 'ministerios.html', name: 'Ministerios' },
-    { url: 'escuela.html', name: 'Escuela' },
-    // Añade más páginas aquí
-];
-
-const sections = [
-    { url: 'multimedia.html#horarios', name: 'Horarios en Multimedia' },
-    { url: 'oraciones.html#discipulados', name: 'Discipulados en Oraciones' },
-    { url: 'ministerios.html#progreso', name: 'Progreso en Ministerios' },
-    // Añade más secciones aquí
-];
-
-const searchInput = document.getElementById('searchInput');
-const searchResults = document.getElementById('searchResults');
-const content = document.querySelector('.content');
-const blurOverlay = document.createElement('div');
-blurOverlay.className = 'blur-overlay';
-document.body.appendChild(blurOverlay);
-
-searchInput.addEventListener('input', function() {
-    const query = this.value.toLowerCase();
-    searchResults.innerHTML = '';
-    if (query) {
-        let results = [...pages, ...sections].filter(item =>
-            item.name.toLowerCase().includes(query)
-        );
-        results.forEach(result => {
-            const link = document.createElement('a');
-            link.href = result.url;
-            link.textContent = result.name;
-            searchResults.appendChild(link);
-        });
-        searchResults.classList.add('show');
-        content.classList.add('blur-background');
-        blurOverlay.style.display = 'block';
-    } else {
-        searchResults.classList.remove('show');
-        content.classList.remove('blur-background');
-        blurOverlay.style.display = 'none';
-    }
-});
-
-document.addEventListener('click', function(event) {
-    if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
-        searchResults.classList.remove('show');
-        content.classList.remove('blur-background');
-        blurOverlay.style.display = 'none';
-    }
-});

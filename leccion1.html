@@ -221,9 +221,7 @@
 
             if (todasRespondidas) {
                 let progreso = localStorage.getItem('progreso') || 1;
-                progreso = Math.max(progreso, 24
-
-                ); // Asegura que el progreso mínimo sea 2
+                progreso = Math.max(progreso, 2); // Asegura que el progreso mínimo sea 2
                 localStorage.setItem('progreso', progreso);
                 alert('Examen completado. Progreso guardado.');
                 window.location.href = 'dotrinabasica.html';

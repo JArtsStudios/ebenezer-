@@ -8,6 +8,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/escuela.css">
   <link rel="icon" href="img/logo pequeño.png">
 </head>
@@ -24,18 +36,16 @@
         &#9776;
     </div>
     <div class="nav-links" id="nav-links">
-        <a href="inicio.html">Inicio</a>
-        <a href="progreso.html">Progresos</a>
+        <a href="./inicio/">Inicio</a>
+        <a href="perfil.html">Progresos</a>
  
 
     </div>
-    <div id="profile">
-        <a href="perfil.html">
-            <img id="avatar" src="" alt="Foto de perfil">
-        </a>
-    </div>
-    
+   <div class="div"></div>
 </div>
+
+
+
 
 
  <div class="principal">
@@ -49,7 +59,20 @@
 </p>
  </div>
 
+ <!-- <a href="#" class="btn-acceso" id="acceso">Acceder a Escuela</a> -->
 
+    <!-- Fondo oscuro -->
+    <div id="overlay" class="hidden"></div>
+
+    <!-- Banner -->
+    <div id="banner" class="hidden">
+        <span id="close-banner" class="close">✖</span>
+        <p>Introduce la contraseña para acceder a la sección:</p>
+        <input type="password" class="contrasena" id="password" placeholder="Contraseña">
+        <button id="submit" class="enviar">Enviar</button>
+        <p id="mensaje" class="hidden"></p>
+        <a href="#" class="nocontrasena">No tienes la contraseña?</a>
+    </div>
 <div class="container">
 
   <div class="card">
@@ -75,7 +98,7 @@
         <h1>Doctrina Basica</h1>
     </div>
     <img src="img/imagen-dotrina-basica.jpeg" alt="dotrina Basica">
-    <a href="#" id="redirectLink2">Iniciar</a>
+    <a href="#" id="acceso" >Iniciar</a>
 </div>
 
 
@@ -88,7 +111,7 @@
     <div class="comentarios">
         <div class="info-de-usuario">
             <div class="foto-coment">
-                <img src="img/usuario1.jpg" alt="usuario">
+                <img src="img/usuario1.webp" alt="usuario">
             </div>
             <div class="nombres">
                 <h3>Hno</h3>
@@ -103,7 +126,7 @@
     <div class="comentarios">
         <div class="info-de-usuario">
             <div class="foto-coment">
-                <img src="img/usuario2.jpg" alt="usuario">
+                <img src="img/usuario2.webp" alt="usuario">
             </div>
             <div class="nombres">
                 <h3>Hna</h3>

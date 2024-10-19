@@ -17,6 +17,19 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Verifica si ya se ha aceptado las cookies
+    if (!localStorage.getItem("cookiesAccepted")) {
+      document.getElementById("cookie-banner").style.display = "block";
+    }
+  
+    document.getElementById("accept-cookies").addEventListener("click", function() {
+      // Almacena la aceptación en localStorage
+      localStorage.setItem("cookiesAccepted", "true");
+      document.getElementById("cookie-banner").style.display = "none"; // Oculta el banner
+    });
+  });
+  
 
 
 // Añadir un efecto parallax con retraso al scroll
@@ -73,7 +86,7 @@ prev.onclick = function(){
 // auto run slider
 let refreshInterval = setInterval(() => {
     next.click();
-}, 5000)
+}, 8000)
 function showSlider(){
     // remove item active old
     let itemActiveOld = document.querySelector('.slider .list .item.active');
@@ -137,18 +150,20 @@ document.addEventListener('DOMContentLoaded', function() {
 // buscadorrr
 
 
+
+
 const pages = [
-    { url: 'multimedia.html', name: 'Multimedia' },
-    { url: 'oraciones.html', name: 'Oraciones' },
-    { url: 'ministerios.html', name: 'Ministerios' },
-    { url: 'escuela.html', name: 'Escuela' },
+    { url: '../multimedia.html', name: 'Multimedia' },
+    { url: '../oraciones.html', name: 'Oraciones' },
+    { url: '../ministerio/', name: 'Ministerios' },
+    { url: '../escuela.html', name: 'Escuela' },
     // Añade más páginas aquí
 ];
 
 const sections = [
-    { url: 'multimedia.html#horarios', name: 'Horarios en Multimedia' },
-    { url: 'oraciones.html#discipulados', name: 'Discipulados en Oraciones' },
-    { url: 'ministerios.html#progreso', name: 'Progreso en Ministerios' },
+    { url: '#horarios', name: 'Horarios en Inicio' },
+    { url: '#discipulados', name: 'Discipulados Inicio' },
+    { url: '../ministerio/#Departamentos', name: 'Departamentos en el Ministerio' },
     // Añade más secciones aquí
 ];
 
@@ -159,33 +174,54 @@ const blurOverlay = document.createElement('div');
 blurOverlay.className = 'blur-overlay';
 document.body.appendChild(blurOverlay);
 
-searchInput.addEventListener('input', function() {
+let closeTimeout;
+
+searchInput.addEventListener('input', function () {
     const query = this.value.toLowerCase();
     searchResults.innerHTML = '';
+
     if (query) {
         let results = [...pages, ...sections].filter(item =>
             item.name.toLowerCase().includes(query)
         );
+
+        // Si no hay resultados
+        if (results.length === 0) {
+            const noResults = document.createElement('div');
+            noResults.className = 'no-results';
+            noResults.textContent = 'No se encontraron resultados';
+            searchResults.appendChild(noResults);
+        }
+
         results.forEach(result => {
             const link = document.createElement('a');
             link.href = result.url;
             link.textContent = result.name;
             searchResults.appendChild(link);
         });
+
         searchResults.classList.add('show');
         content.classList.add('blur-background');
         blurOverlay.style.display = 'block';
+
+        // Evitar que el cuadro se cierre de inmediato cuando se muestran resultados
+        clearTimeout(closeTimeout);
     } else {
-        searchResults.classList.remove('show');
-        content.classList.remove('blur-background');
-        blurOverlay.style.display = 'none';
+        closeSearchResults();
     }
 });
 
-document.addEventListener('click', function(event) {
+// Cerrar resultados con un retraso
+document.addEventListener('click', function (event) {
     if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
-        searchResults.classList.remove('show');
-        content.classList.remove('blur-background');
-        blurOverlay.style.display = 'none';
+        closeTimeout = setTimeout(() => {
+            closeSearchResults();
+        }, 2000); // Cambia el tiempo de cierre a 2 segundos
     }
 });
+
+function closeSearchResults() {
+    searchResults.classList.remove('show');
+    content.classList.remove('blur-background');
+    blurOverlay.style.display = 'none';
+}
